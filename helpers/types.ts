@@ -11,6 +11,7 @@ export enum eTenderly {
 export type eNetwork =
   | eEthereumNetwork
   | ePolygonNetwork
+  | eNeonNetwork
   | eXDaiNetwork
   | eAvalancheNetwork
   | eArbitrumNetwork
@@ -43,6 +44,8 @@ export enum eEthereumNetwork {
   rinkeby = "rinkeby",
   goerli = "goerli",
   sepolia = "sepolia",
+  neonmain = "neonmain",
+  neondev = "neondev",
 }
 
 export enum eBaseNetwork {
@@ -53,6 +56,11 @@ export enum eBaseNetwork {
 export enum ePolygonNetwork {
   polygon = "polygon",
   mumbai = "mumbai",
+}
+
+export enum eNeonNetwork {
+  neonmain = "neonmain",
+  neondev = "neondev",
 }
 
 export enum eXDaiNetwork {
@@ -80,6 +88,8 @@ export enum EthereumNetworkNames {
   ropsten = "ropsten",
   main = "main",
   matic = "matic",
+  neonmain = "neonmain",
+  neondev = "neondev",
   mumbai = "mumbai",
   xdai = "xdai",
   avalanche = "avalanche",
@@ -89,6 +99,7 @@ export enum EthereumNetworkNames {
 export enum AavePools {
   proto = "proto",
   matic = "matic",
+  neon = "neon",
   amm = "amm",
   avalanche = "avalanche",
 }
@@ -439,6 +450,7 @@ export type iParamsPerNetworkWithDefault<T> = {
 export interface iParamsPerNetworkAll<T>
   extends iEthereumParamsPerNetwork<T>,
     iPolygonParamsPerNetwork<T>,
+    iNeonParamsPerNetwork<T>,
     iXDaiParamsPerNetwork<T> {}
 
 export interface iEthereumParamsPerNetwork<T> {
@@ -451,6 +463,11 @@ export interface iEthereumParamsPerNetwork<T> {
 export interface iPolygonParamsPerNetwork<T> {
   [ePolygonNetwork.polygon]: T;
   [ePolygonNetwork.mumbai]: T;
+}
+
+export interface iNeonParamsPerNetwork<T> {
+  [eNeonNetwork.neonmain]: T;
+  [eNeonNetwork.neondev]: T;
 }
 
 export interface iXDaiParamsPerNetwork<T> {
@@ -470,6 +487,7 @@ export interface iArbitrumParamsPerNetwork<T> {
 export interface iParamsPerPool<T> {
   [AavePools.proto]: T;
   [AavePools.matic]: T;
+  [AavePools.neon]: T;
   [AavePools.amm]: T;
   [AavePools.avalanche]: T;
 }

@@ -189,11 +189,11 @@ export const initReservesByHelper = async (
       treasury: treasuryAddress,
       incentivesController,
       underlyingAssetName: reserveSymbols[i],
-      aTokenName: `Aave ${aTokenNamePrefix} ${reserveSymbols[i]}`,
-      aTokenSymbol: `a${symbolPrefix}${reserveSymbols[i]}`,
-      variableDebtTokenName: `Aave ${variableDebtTokenNamePrefix} Variable Debt ${reserveSymbols[i]}`,
+      aTokenName: `LendOS ${aTokenNamePrefix} ${reserveSymbols[i]}`,
+      aTokenSymbol: `os${symbolPrefix}${reserveSymbols[i]}`,
+      variableDebtTokenName: `LendOS ${variableDebtTokenNamePrefix} Variable Debt ${reserveSymbols[i]}`,
       variableDebtTokenSymbol: `variableDebt${symbolPrefix}${reserveSymbols[i]}`,
-      stableDebtTokenName: `Aave ${stableDebtTokenNamePrefix} Stable Debt ${reserveSymbols[i]}`,
+      stableDebtTokenName: `LendOS ${stableDebtTokenNamePrefix} Stable Debt ${reserveSymbols[i]}`,
       stableDebtTokenSymbol: `stableDebt${symbolPrefix}${reserveSymbols[i]}`,
       params: "0x10",
     });
@@ -402,6 +402,7 @@ export const configureReservesByHelper = async (
         `  - Init for: ${chunkedSymbols[chunkIndex].join(", ")}`,
         `\n    - Tx hash: ${tx.transactionHash}`
       );
+      // console.log("Skipping config 2...");
     }
     // Remove ReservesSetupHelper from risk admins
     await waitForTx(

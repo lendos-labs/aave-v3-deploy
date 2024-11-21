@@ -5,6 +5,7 @@ import {
   eHarmonyNetwork,
   eOptimismNetwork,
   ePolygonNetwork,
+  eNeonNetwork,
   TransferStrategy,
   eBaseNetwork,
 } from "./../../helpers/types";
@@ -75,6 +76,7 @@ export const CommonsConfig: ICommonConfiguration = {
     enabled: {
       [eArbitrumNetwork.arbitrum]: true,
       [ePolygonNetwork.polygon]: true,
+      [eNeonNetwork.neonmain]: true,
       [eOptimismNetwork.main]: true,
       [eFantomNetwork.main]: true,
       [eHarmonyNetwork.main]: true,
@@ -143,16 +145,16 @@ export const CommonsConfig: ICommonConfiguration = {
       ],
     },
   },
-  EModes: {
-    StableEMode: {
-      id: "1",
-      ltv: "9700",
-      liquidationThreshold: "9750",
-      liquidationBonus: "10100",
-      label: "Stablecoins",
-      assets: ["USDC", "USDT", "DAI", "EURS"],
-    },
-  },
+  // EModes: {
+  //   StableEMode: {
+  //     id: "1",
+  //     ltv: "9700",
+  //     liquidationThreshold: "9750",
+  //     liquidationBonus: "10100",
+  //     label: "Stablecoins",
+  //     assets: ["USDC", "USDT", "DAI", "EURS"],
+  //   },
+  // },
   L2PoolEnabled: {
     [eArbitrumNetwork.arbitrum]: true,
     [eArbitrumNetwork.goerliNitro]: true,

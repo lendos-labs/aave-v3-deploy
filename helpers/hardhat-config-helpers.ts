@@ -6,6 +6,7 @@ import {
   eEthereumNetwork,
   eNetwork,
   ePolygonNetwork,
+  eNeonNetwork,
   eArbitrumNetwork,
   eHarmonyNetwork,
   eAvalancheNetwork,
@@ -70,6 +71,8 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [ePolygonNetwork.polygon]: `https://polygon-mainnet.g.alchemy.com/v2/${getAlchemyKey(
     ePolygonNetwork.polygon
   )}`,
+  [eNeonNetwork.neonmain]: "https://neon-proxy-mainnet.solana.p2p.org",
+  [eNeonNetwork.neondev]: "https://devnet.neonevm.org",
   [eArbitrumNetwork.arbitrum]: `https://arb1.arbitrum.io/rpc`,
   [eArbitrumNetwork.arbitrumTestnet]: `https://rinkeby.arbitrum.io/rpc`,
   [eEthereumNetwork.rinkeby]: `https://eth-rinkeby.alchemyapi.io/v2/${getAlchemyKey(
@@ -109,6 +112,8 @@ export const LIVE_NETWORKS: iParamsPerNetwork<boolean> = {
   [eFantomNetwork.main]: true,
   [eOptimismNetwork.main]: true,
   [eBaseNetwork.base]: true,
+  [eNeonNetwork.neonmain]: true,
+  [eNeonNetwork.neondev]: true,
 };
 
 const GAS_PRICE_PER_NET: iParamsPerNetwork<string | number> = {
@@ -167,6 +172,8 @@ const MNEMONICS: iParamsPerNetwork<string> = {
   [eArbitrumNetwork.arbitrumTestnet]: process.env.ARBITRUM_MNEMONIC,
   [ePolygonNetwork.mumbai]: process.env.POLYGON_MUMBAI_MNEMONIC,
   [ePolygonNetwork.polygon]: process.env.POLYGON_MNEMONIC,
+  [eNeonNetwork.neonmain]: process.env.NEON_MAIN_MNEMONIC,
+  [eNeonNetwork.neondev]: process.env.NEON_MNEMONIC,
 };
 
 export const hardhatNetworkSettings = {

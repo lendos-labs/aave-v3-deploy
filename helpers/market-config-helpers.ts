@@ -36,6 +36,7 @@ import {
 import { ZERO_ADDRESS } from "./constants";
 import { getTestnetReserveAddressFromSymbol, POOL_DATA_PROVIDER } from ".";
 import { ENABLE_REWARDS } from "./env";
+import NeonConfig from "../markets/neon";
 
 declare var hre: HardhatRuntimeEnvironment;
 
@@ -52,6 +53,7 @@ export enum ConfigNames {
   Ethereum = "Ethereum",
   Base = "Base",
   baseGoerli = "base-goerli",
+  Neon = "Neon",
 }
 
 export const getParamPerNetwork = <T>(
@@ -119,6 +121,8 @@ export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
       return EthereumV3Config;
     case ConfigNames.Base:
       return BaseConfig;
+    case ConfigNames.Neon:
+      return NeonConfig;
     default:
       throw new Error(
         `Unsupported pool configuration: ${configName} is not one of the supported configs ${Object.values(
