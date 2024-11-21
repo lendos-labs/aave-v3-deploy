@@ -14,6 +14,7 @@ import {
   eHarmonyNetwork,
   eOptimismNetwork,
   ePolygonNetwork,
+  eNeonNetwork,
   eBaseNetwork,
 } from "./helpers/types";
 import { DEFAULT_NAMED_ACCOUNTS } from "./helpers/constants";
@@ -127,6 +128,14 @@ export default {
       eBaseNetwork.baseGoerli,
       84531
     ),
+    [eNeonNetwork.neonmain]: getCommonNetworkConfig(
+      eNeonNetwork.neonmain,
+      245022934
+    ),
+    [eNeonNetwork.neondev]: getCommonNetworkConfig(
+      eNeonNetwork.neondev,
+      245022926
+    ),
   },
   namedAccounts: {
     ...DEFAULT_NAMED_ACCOUNTS,
@@ -138,7 +147,7 @@ export default {
     paths: [
       "@aave/core-v3/contracts/protocol/configuration/PoolAddressesProviderRegistry.sol",
       "@aave/core-v3/contracts/protocol/configuration/PoolAddressesProvider.sol",
-      "@aave/core-v3/contracts/misc/AaveOracle.sol",
+      "contracts/AaveOracle.sol",
       "@aave/core-v3/contracts/protocol/tokenization/AToken.sol",
       "@aave/core-v3/contracts/protocol/tokenization/DelegationAwareAToken.sol",
       "@aave/core-v3/contracts/protocol/tokenization/StableDebtToken.sol",
@@ -201,6 +210,9 @@ export default {
       "@aave/safety-module/contracts/stake/StakedAave.sol",
       "@aave/safety-module/contracts/stake/StakedAaveV2.sol",
       "@aave/safety-module/contracts/proposals/extend-stkaave-distribution/StakedTokenV2Rev3.sol",
+      "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
+      "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+      "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
     ],
   },
   deterministicDeployment: DETERMINISTIC_DEPLOYMENT
@@ -210,11 +222,21 @@ export default {
     apiKey: ETHERSCAN_KEY,
     customChains: [
       {
-        network: eBaseNetwork.base,
-        chainId: 8453,
+        network: eEthereumNetwork.neondev,
+        chainId: 245022926,
         urls: {
-          apiURL: "https://api.basescan.org/api",
-          browserURL: "https://basescan.org/",
+          apiURL: "https://devnet-api.neonscan.org/hardhat/verify",
+          browserURL: "https://devnet.neonscan.org",
+        },
+      },
+      {
+        network: eEthereumNetwork.neonmain,
+        chainId: 245022934,
+        urls: {
+          // apiURL: "https://api.neonscan.org/hardhat/verify",
+          // browserURL: "https://neonscan.org",
+          apiURL: "https://neon.blockscout.com/api",
+          browserURL: "https://neon.blockscout.com/",
         },
       },
     ],
